@@ -15,8 +15,9 @@ module.exports = {
       alias: {
         '@config': './src/config',
         '@core': './src/core',
-        '@Database': './src/database/Database.ts',
-        '@app': './src/app'
+        '@Database': './src/database/Database',
+        '@app': './src/app',
+        '@application': './src/app'
       }
     }]
   ],

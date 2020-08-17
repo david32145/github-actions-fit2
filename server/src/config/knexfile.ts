@@ -1,8 +1,8 @@
-require('ts-node/register')
-require('dotenv/config')
-const path = require('path')
+// import 'ts-node/register'
+import './env'
+import path from 'path'
 
-module.exports = {
+export default {
   testing: {
     client: 'sqlite3',
     connection: {

@@ -1,5 +1,12 @@
 node_modules
 dist
-src/tmp
+
+src/tmp/**/*
+!src/tmp/.gitkeep
+
+__test__/coverage/**/*
+!__test__/coverage/.gitkeep
+
 .env
+
 yarn-error.log

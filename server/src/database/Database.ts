@@ -1,5 +1,5 @@
 import knex from 'knex'
-const connection = require('../config/knexfile')
+import connection from '../config/knexfile'
 
 let Database: knex<any, unknown[]> | null = null
 
@@ -12,11 +12,11 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 if (process.env.NODE_ENV === 'staging') {
-  Database = knex(knex(connection.staging))
+  Database = knex(connection.staging)
 }
 
 if (process.env.NODE_ENV === 'production') {
-  Database = knex(knex(connection.development))
+  Database = knex(connection.development)
 }
 
 if (Database === null) {

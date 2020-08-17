@@ -1,8 +1,9 @@
-import ITodoModel from 'src/database/models/ITodoModel'
+import Todo from '@app/domain/Todo'
 
 export default interface ITodoRepository {
-  findAll(): Promise<ITodoModel[]>
-  findByPk(pk: number): Promise<ITodoModel | undefined>
-  create(todoModel: ITodoModel): Promise<ITodoModel>
-  updateByPk(todoModel: ITodoModel, pk: number): Promise<ITodoModel>
+  findAll(): Promise<Todo[]>
+  findByPk(pk: number): Promise<Todo | undefined>
+  create(todo: Todo): Promise<Todo>
+  updateByPk(todo: Todo, pk: number): Promise<Todo>
+  deleteByPk(pk: number): Promise<void>
 }

@@ -18,15 +18,19 @@ module.exports = {
   // collectCoverage: false,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
-  // collectCoverageFrom: undefined,
+  collectCoverageFrom: [
+    'src/**/*',
+    '!src/database/**/*',
+    '!src/index.ts'
+  ],
 
   // The directory where Jest should output its coverage files
-  // coverageDirectory: undefined,
+  coverageDirectory: '<rootDir>/__test__/coverage',
 
   // An array of regexp pattern strings used to skip coverage collection
-  // coveragePathIgnorePatterns: [
-  //   "/node_modules/"
-  // ],
+  coveragePathIgnorePatterns: [
+    '/node_modules/'
+  ],
 
   // A list of reporter names that Jest uses when writing coverage reports
   // coverageReporters: [
@@ -49,7 +53,7 @@ module.exports = {
   // forceCoverageMatch: [],
 
   // A path to a module which exports an async function that is triggered once before all test suites
-  globalSetup: './src/__test__/utils/globalSetup.ts',
+  globalSetup: './__test__/utils/globalSetup.ts',
 
   // A path to a module which exports an async function that is triggered once after all test suites
   // globalTeardown: './globalTeardown.ts',
@@ -126,7 +130,7 @@ module.exports = {
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
   setupFilesAfterEnv: [
-    './src/__test__/utils/setupFiles.ts'
+    './__test__/utils/setupFiles.ts'
   ],
 
   // A list of paths to snapshot serializer modules Jest should use for snapshot testing
@@ -143,13 +147,14 @@ module.exports = {
 
   // The glob patterns Jest uses to detect test files
   testMatch: [
-    '<rootDir>/src/__test__/**/*.ts'
+    '<rootDir>/__test__/**/*.ts'
   ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   testPathIgnorePatterns: [
     '/node_modules/',
-    './__test__/utils'
+    './__test__/utils',
+    './__test__/coverage'
   ],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files

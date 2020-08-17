@@ -1,5 +1,5 @@
-import Entity from '@core/domain/Entity'
-import TodoAlreadyCompleted from '@app/erros/TodoAlreadyCompleted'
+import Entity from '../../core/domain/Entity'
+import TodoAlreadyCompleted from '../erros/TodoAlreadyCompleted'
 
 export default class Todo extends Entity<number> {
   private _id?: number

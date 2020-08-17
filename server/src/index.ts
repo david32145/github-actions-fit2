@@ -1,3 +1,4 @@
+import './config/env'
 import app from './app'
 
 const PORT = process.env.PORT || 3333
@@ -7,6 +8,6 @@ app.listen(PORT, function (...err:any[]) {
     console.log('An error ocurred')
     console.error(err)
   } else {
-    console.log(`Server is running in http://localhost${PORT}`)
+    console.log(`Server is running in http://localhost:${PORT}`)
   }
 })
