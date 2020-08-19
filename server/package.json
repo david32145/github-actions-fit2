@@ -5,7 +5,7 @@
   "license": "MIT",
   "husky": {
     "hooks": {
-      "pre-push": "yarn test --runInBand"
+      "pre-push": "yarn test"
     }
   },
   "scripts": {
