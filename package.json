@@ -1,0 +1,31 @@
+{
+  "name": "github-actions-template",
+  "version": "1.0.0",
+  "workspaces": [
+    "server",
+    "web"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-push": "yarn test",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "private": true,
+  "repository": "https://github.com/david32145/github-actions-template.git",
+  "author": "david32145 <nascimento32145@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "NODE_ENV=testing jest",
+    "lint": "yarn workspaces run lint"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.10",
+    "jest": "^26.4.0",
+    "ts-jest": "^26.2.0",
+    "typescript": "^3.7.2",
+    "husky": "^4.2.5",
+    "@commitlint/cli": "^9.1.2",
+    "@commitlint/config-conventional": "^9.1.2"
+  }
+}

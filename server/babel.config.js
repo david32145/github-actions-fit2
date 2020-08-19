@@ -23,6 +23,6 @@ module.exports = {
   ],
   ignore: [
     './src/@types',
-    './src/__test__'
+    './__test__'
   ]
 }
