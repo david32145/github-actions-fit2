@@ -7,6 +7,7 @@ module.exports = {
     '!src/database/**/*',
     '!src/index.ts'
   ],
+  clearMocks: true,
   coverageDirectory: '<rootDir>/__test__/coverage',
   coveragePathIgnorePatterns: [
     '/node_modules/'

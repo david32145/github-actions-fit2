@@ -45,6 +45,9 @@
         "import/prefer-default-export": "off"
     },
     "settings": {
+        "react": {
+            "version": "^16.13.1"
+        },
         "import/parsers": {
             "@typescript-eslint/parser": [
                 ".ts",

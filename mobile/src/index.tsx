@@ -29,8 +29,8 @@ const App: React.FC = () => {
     }
     const createdTodo = await TodoService.store(currentTodo);
     setTodos([...todos, createdTodo]);
-    Keyboard.dismiss();
     setCurrentTodo('');
+    Keyboard.dismiss();
   }
 
   async function handleComplete(id: number): Promise<void> {
@@ -59,8 +59,12 @@ const App: React.FC = () => {
           style={styles.textInput}
           value={currentTodo}
           onChangeText={setCurrentTodo}
+          testID="todoInput"
         />
-        <TouchableOpacity style={styles.button} onPress={handleAddTodo}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={handleAddTodo}
+          testID="btnAddTodo">
           <Text style={styles.buttonText}>add</Text>
         </TouchableOpacity>
       </View>

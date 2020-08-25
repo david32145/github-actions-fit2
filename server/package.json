@@ -1,6 +1,7 @@
 {
   "name": "@todo/server",
   "version": "1.0.0",
+  "license": "MIT",
   "main": "dist/index.js",
   "scripts": {
     "dev": "tsnd -r tsconfig-paths/register --respawn --no-notify --ignore-watch node_modules --transpile-only src/index.ts",
