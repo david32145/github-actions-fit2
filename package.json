@@ -9,12 +9,6 @@
     "web",
     "mobile"
   ],
-  "husky": {
-    "hooks": {
-      "pre-push": "yarn test && yarn lint",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
   "private": true,
   "repository": "https://github.com/david32145/github-actions-template.git",
   "author": "david32145 <nascimento32145@gmail.com>",
