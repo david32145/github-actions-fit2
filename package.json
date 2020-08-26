@@ -1,6 +1,9 @@
 {
   "name": "github-actions-template",
   "version": "1.0.0",
+  "bin": {
+    "env-setup": "./scripts/env-setup"
+  },
   "workspaces": [
     "server",
     "web",
@@ -19,14 +22,16 @@
   "scripts": {
     "test": "NODE_ENV=testing yarn workspaces run test",
     "lint": "yarn workspaces run lint",
-    "prebuild": "node envSetup.js",
+    "prebuild": "node ./scripts/env-setup.js",
     "build": "yarn workspaces run build"
   },
   "devDependencies": {
     "@commitlint/cli": "^9.1.2",
     "@commitlint/config-conventional": "^9.1.2",
     "@types/jest": "^26.0.10",
+    "dropbox": "^5.2.1",
     "husky": "^4.2.5",
+    "isomorphic-fetch": "^2.2.1",
     "jest": "^26.4.0",
     "ts-jest": "^26.2.0",
     "typescript": "^3.7.2"
