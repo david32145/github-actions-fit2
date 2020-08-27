@@ -33,15 +33,16 @@ jobs:
         env:
           REACT_APP_API_URL: https://fittodo2.herokuapp.com/
           REACT_NATIVE_API_URL: https://fittodo2.herokuapp.com/
-      - name: Build and deploy web app
-        uses: jsmrcaga/action-netlify-deploy@v1.1.0
+      - name: Build of web
+        run: yarn web-build
+      - name: Deploy web site to netlify
+        uses: South-Paw/action-netlify-deploy@v1.0.4
         with:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{secrets.NETLIFY_SITE_ID}}
-          NETLIFY_DEPLOY_TO_PROD: true
-          build_directory: ./web/dist
-          install_command: yarn
-          build_command: yarn web-build
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          netlify-site-id: ${{ secrets.NETLIFY_SITE_ID }}
+          build-dir: './web/dist'
+          comment-on-commit: true
       - name: Deploy server app
         uses: akhileshns/heroku-deploy@v3.4.6
         with:
