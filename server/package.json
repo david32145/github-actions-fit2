@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "main": "dist/index.js",
-  "heroku-run-build-script": false,
+  "heroku-run-build-script": true,
   "scripts": {
     "dev": "tsnd -r tsconfig-paths/register --respawn --no-notify --ignore-watch node_modules --transpile-only src/index.ts",
     "lint": "eslint --ext=.ts,.js src",
@@ -11,7 +11,8 @@
     "test": "NODE_ENV=testing jest",
     "start": "node ./dist/index.js",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
-    "db:migrate:make": "knex --knexfile=./src/config/knexfile.ts migrate:latest"
+    "db:migrate:make": "knex --knexfile=./src/config/knexfile.ts migrate:latest",
+    "heroku-postbuild": "echo Skip build on Heroku"
   },
   "dependencies": {
     "cors": "^2.8.5",
