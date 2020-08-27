@@ -21,6 +21,7 @@ class TodoRepository implements ITodoRepository {
   public async create (todo: Todo): Promise<Todo> {
     const [todoId] = await Database<ITodoModel>('todos')
       .insert(TodoMapper.fromDomainToRepository(todo))
+      .returning('id')
     const createdTodo = await this.findByPk(todoId as number)
     return createdTodo!
   }
