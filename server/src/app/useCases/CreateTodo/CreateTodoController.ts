@@ -14,6 +14,7 @@ export default class CreateTodoController {
       const todoDTO = await this.createTodoUseCase.execute(request.body)
       return response.status(201).json(todoDTO)
     } catch (err) {
+      console.log(err)
       return response.status(500).send()
     }
   }
