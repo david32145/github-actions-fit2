@@ -40,6 +40,7 @@ jobs:
           NETLIFY_SITE_ID: ${{secrets.NETLIFY_SITE_ID}}
           NETLIFY_DEPLOY_TO_PROD: true
           build_directory: ./web/dist
+          install_command: echo "Skip install"
           build_command: echo "Skip web build"
       - name: Deploy server app
         uses: akhileshns/heroku-deploy@v3.4.6

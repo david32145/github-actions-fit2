@@ -22,7 +22,7 @@
   "scripts": {
     "test": "NODE_ENV=testing yarn workspaces run test",
     "lint": "yarn workspaces run lint",
-    "prebuild": "node ./scripts/env-setup.js",
+    "prepare-env": "node ./scripts/env-setup.js",
     "build": "yarn workspaces run build"
   },
   "devDependencies": {
