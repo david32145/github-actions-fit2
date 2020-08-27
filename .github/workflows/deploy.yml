@@ -28,20 +28,20 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: Install dependencies
         run: yarn
-      - name: Run build
+      - name: Prepare env for web and mobile
+        run: yarn prepare-env
         env:
           REACT_APP_API_URL: https://fittodo2.herokuapp.com/
           REACT_NATIVE_API_URL: https://fittodo2.herokuapp.com/
-        run: yarn build
-      - name: Deploy web app
+      - name: Build and deploy web app
         uses: jsmrcaga/action-netlify-deploy@v1.1.0
         with:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{secrets.NETLIFY_SITE_ID}}
           NETLIFY_DEPLOY_TO_PROD: true
           build_directory: ./web/dist
-          install_command: echo "Skip install"
-          build_command: echo "Skip web build"
+          install_command: yarn
+          build_command: yarn web-build
       - name: Deploy server app
         uses: akhileshns/heroku-deploy@v3.4.6
         with:
@@ -49,7 +49,7 @@ jobs:
           heroku_app_name: "fittodo2"
           heroku_email: "nascimento32145@gmail.com"
           appdir: ./server
-      - name: Send apk to dropbox
-        env:
-          DROPBOX_ACCESS_TOKEN: ${{secrets.DROPBOX_ACCESS_TOKEN}}
-        run: node ./scripts/upload-apk-drive.js
+      # - name: Send apk to dropbox
+      #   env:
+      #     DROPBOX_ACCESS_TOKEN: ${{secrets.DROPBOX_ACCESS_TOKEN}}
+      #   run: node ./scripts/upload-apk-drive.js

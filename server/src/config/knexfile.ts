@@ -1,4 +1,3 @@
-import 'ts-node/register'
 import './env'
 import path from 'path'
 

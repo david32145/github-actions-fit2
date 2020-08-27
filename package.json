@@ -23,7 +23,7 @@
     "test": "NODE_ENV=testing yarn workspaces run test",
     "lint": "yarn workspaces run lint",
     "prepare-env": "node ./scripts/env-setup.js",
-    "build": "yarn workspaces run build"
+    "web-build": "yarn workspace @todo/web run build"
   },
   "devDependencies": {
     "@commitlint/cli": "^9.1.2",
