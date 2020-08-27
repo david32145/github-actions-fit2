@@ -1,0 +1,52 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - stage
+jobs:
+  deploy:
+    name: Project deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout on repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Setup in NodeJS
+        uses: actions/setup-node@v1
+        with: 
+          node-version: 12
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Install dependencies
+        run: yarn
+      - name: Run build
+        env:
+          REACT_APP_API_URL: https://fittodo2.herokuapp.com/
+          REACT_NATIVE_API_URL: https://fittodo2.herokuapp.com/
+        run: yarn build
+      - name: Deploy web app
+        uses: jsmrcaga/action-netlify-deploy@v1.1.0
+        with:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{secrets.NETLIFY_SITE_ID}}
+          build_directory: ./web/dist
+      - name: Deploy server app
+        uses: akhileshns/heroku-deploy@v3.4.6
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "fittodo2"
+          heroku_email: "nascimento32145@gmail.com"
+          appdir: ./server
+      - name: Send apk to dropbox
+        env:
+          DROPBOX_ACCESS_TOKEN: ${{secrets.DROPBOX_ACCESS_TOKEN}}
+        run: node ./scripts/upload-apk-drive.js
