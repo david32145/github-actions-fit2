@@ -1,9 +1,6 @@
 {
   "name": "github-actions-template",
   "version": "1.0.0",
-  "bin": {
-    "env-setup": "./scripts/env-setup"
-  },
   "workspaces": [
     "server",
     "web",
@@ -23,7 +20,9 @@
     "test": "NODE_ENV=testing yarn workspaces run test",
     "lint": "yarn workspaces run lint",
     "prepare-env": "node ./scripts/env-setup.js",
-    "web-build": "yarn workspace @todo/web run build"
+    "web-build": "yarn workspace @todo/web run build",
+    "mobile-build": "yarn workspace @todo/mobile run build",
+    "upload-apk-dropbox": "node ./scripts/upload-apk-dropbox.js"
   },
   "devDependencies": {
     "@commitlint/cli": "^9.1.2",

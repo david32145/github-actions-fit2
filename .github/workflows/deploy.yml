@@ -50,7 +50,9 @@ jobs:
           heroku_app_name: "fittodo2"
           heroku_email: "nascimento32145@gmail.com"
           appdir: ./server
-      # - name: Send apk to dropbox
-      #   env:
-      #     DROPBOX_ACCESS_TOKEN: ${{secrets.DROPBOX_ACCESS_TOKEN}}
-      #   run: node ./scripts/upload-apk-drive.js
+      - name: Build of mobile
+        run: yarn mobile-build
+      - name: Send apk to dropbox
+        env:
+          DROPBOX_ACCESS_TOKEN: ${{secrets.DROPBOX_ACCESS_TOKEN}}
+        run: yarn upload-apk-dropbox
