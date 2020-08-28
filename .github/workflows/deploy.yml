@@ -56,3 +56,14 @@ jobs:
         env:
           DROPBOX_ACCESS_TOKEN: ${{secrets.DROPBOX_ACCESS_TOKEN}}
         run: yarn upload-apk-dropbox
+      - name: Send main notification
+        uses: dawidd6/action-send-mail@v2
+        with:
+          server_address: ${{secrets.MAIN_HOST}}
+          server_port: 465
+          username: ${{secrets.MAIL_USERNAME}}
+          password: ${{secrets.MAIL_PASSWORD}}
+          subject: "[Todo App] - New release"
+          body: file://MAIL_TEMPLATE.md
+          to: david@npds.com,almada@npds.com,joao@gmail.com
+          from: GitHub Actions
